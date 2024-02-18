@@ -16,7 +16,29 @@ class remove_duplicate_from_array:
             i += 1
         return t
             
+class remove_elements: 
+
+    def __init__(self, input_array, val):
+        self.input_array = input_array
+        self.val = val
+
+    def removeElement(self) -> List[int]:
         
+        i = 0
+        t = 0
+        while i < len(self.input_array):
+            if self.input_array[i] != self.val:
+                self.input_array[t] = self.input_array[i]
+                t += 1    
+            i += 1
+        
+        print(self.input_array)
+        return t
+
+
+     
+     
+
         
 
 class byandsell:
@@ -33,6 +55,8 @@ class byandsell:
         pass
 
 
-array_instance = remove_duplicate_from_array(input_array=[0,0,1,1,1,2,2,3,3,4])
-unique_array_result = array_instance.RemoveDuplicateFromArray()
+array_instance = remove_elements(input_array=[0,0,1,1,1,2,2,3,3,4], val=3)
+unique_array_result = array_instance.removeElement()
+print(unique_array_result)
+
 
