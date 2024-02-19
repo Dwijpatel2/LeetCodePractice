@@ -1,5 +1,6 @@
 from typing import List
 
+# problem 26
 class remove_duplicate_from_array: 
      def __init__(self, input_array):
         self.input_array = input_array
@@ -15,7 +16,8 @@ class remove_duplicate_from_array:
                 t += 1    
             i += 1
         return t
-            
+
+# problem 27          
 class remove_elements: 
 
     def __init__(self, input_array, val):
@@ -31,15 +33,35 @@ class remove_elements:
                 self.input_array[t] = self.input_array[i]
                 t += 1    
             i += 1
-        
-        print(self.input_array)
+       
         return t
 
 
-     
-     
+# problem 1929
+class conctenation_of_array:
+    
+    def __init__(self, input_array) -> None:
+        self.input_array = input_array
 
+    def getConcatenation(self):
         
+        length = len(self.input_array)
+        array = []
+        t = 0
+        i = 0
+
+        while i < length * 2:
+            array.append(self.input_array[t])
+            t += 1
+           
+            if t == length:
+                t = 0
+            
+            i += 1
+            
+        return array
+
+
 
 class byandsell:
     
@@ -55,8 +77,8 @@ class byandsell:
         pass
 
 
-array_instance = remove_elements(input_array=[0,0,1,1,1,2,2,3,3,4], val=3)
-unique_array_result = array_instance.removeElement()
+array_instance = conctenation_of_array(input_array=[0])
+unique_array_result = array_instance.getConcatenation()
 print(unique_array_result)
 
 
