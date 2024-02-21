@@ -62,7 +62,63 @@ class conctenation_of_array:
         return array
 
 
+# problem 682   
+class baseball_game:
 
+    def __init__(self, input_array) -> None:
+        self.input_array = input_array
+    
+    def calPoints(self): 
+        
+        i = 0 
+        t = 0 
+        num1 = 0
+        num2 = 0
+        stack = []
+        
+        while i < len(self.input_array):
+            
+
+            if self.input_array[i] == '+':
+                num3 = num1 
+                num1 = num2
+                num2 = num1 + num3
+                stack.append(num2)
+                t =  num2 + t
+                
+               
+            elif self.input_array[i] == 'D':
+                
+                num1 = num2 
+                num2 = num2 * 2
+                stack.append(num2)
+                t = num2 + t
+              
+            elif self.input_array[i] == 'C':
+                if stack:
+                    num3 = stack.pop()
+                    if stack:
+                        num2 = stack.pop()
+                        if stack:
+                            num1 = stack.pop()
+                            stack.append(num1)
+                        else: 
+                            num1 = 0    
+                        stack.append(num2)
+                    else:
+                        num2 = num1                   
+                    t = t - num3
+            else: 
+                num3 = int(self.input_array[i])
+                stack.append(num3)
+                num1 = num2
+                num2 = num3
+                t = num2 + t 
+                
+            i += 1    
+
+        return t
+        
 class byandsell:
     
     def __init__(self, items):
@@ -77,8 +133,8 @@ class byandsell:
         pass
 
 
-array_instance = conctenation_of_array(input_array=[0])
-unique_array_result = array_instance.getConcatenation()
+array_instance = baseball_game(input_array=["36","28","70","65","C","+","33","-46","84","C"])
+unique_array_result = array_instance.calPoints()
 print(unique_array_result)
 
 
