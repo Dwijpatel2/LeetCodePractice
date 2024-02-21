@@ -1,5 +1,11 @@
 from typing import List
 
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
 # problem 26
 class remove_duplicate_from_array: 
      def __init__(self, input_array):
@@ -118,7 +124,40 @@ class baseball_game:
             i += 1    
 
         return t
+    
+
+
+
+
+# problem 206
+class reverse_linked_list: 
+    def __init__(self, values=None):
+        if values is None:
+            values = []
+
+        if values:
+            self.head = ListNode(values[0])
+            current = self.head
+            for val in values[1:]:
+                current.next = ListNode(val)
+                current = current.next
+        else:
+            self.head = None
+    
+    def reverseList(self):
+        new_head = None
+        current = self.head
+
+        while current is not None:
+            next_node = current.next
+            current.next = new_head
+            new_head = current
+            current = next_node
         
+        return new_head 
+
+ 
+
 class byandsell:
     
     def __init__(self, items):
@@ -132,9 +171,10 @@ class byandsell:
         
         pass
 
+array_instance = reverse_linked_list([1, 2, 3, 4, 5])
 
-array_instance = baseball_game(input_array=["36","28","70","65","C","+","33","-46","84","C"])
-unique_array_result = array_instance.calPoints()
-print(unique_array_result)
+unique_array_result = array_instance.reverseList()
+
+
 
 
