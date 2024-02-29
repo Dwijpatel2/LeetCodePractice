@@ -6,6 +6,11 @@ class ListNode:
         self.val = val
         self.next = next
 
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
 # problem 26
 class remove_duplicate_from_array: 
      def __init__(self, input_array):
@@ -155,6 +160,61 @@ class reverse_linked_list:
             current = next_node
         
         return new_head 
+
+
+
+#problem 707
+class my_linked_list: 
+
+    def __init__(self):
+        self.size = 0
+        self.head = None
+
+    def get(self, index: int) -> int:
+        if index < 0 or index > self.size: 
+            return -1
+        prev = self.head 
+
+        for _ in range(index):
+            prev = prev.next 
+        return prev.next.val 
+
+    def addAtHead(self, val: int) -> None:
+        self.addAtIndex(0,val)
+
+    def addAtTail(self, val: int) -> None:
+        self.addAtIndex(self.size, val)
+
+    def addAtIndex(self, index: int, val: int) -> None:
+        if index >= self.size: 
+            return
+        
+        prev = self.head
+
+        self.size += 1 
+        for _ in range(index):
+            prev = prev.next
+
+        add_to = ListNode(val)
+
+        add_to.next = prev.next
+        prev.next = add_to
+
+
+
+    def deleteAtIndex(self, index: int) -> None:
+        if index < 0 or index > self.size: 
+            return
+        
+        prev = self.head
+
+        self.size -= 1 
+        for _ in range(index):
+            prev = prev.next
+
+        prev.next = prev.next.next
+
+        
 
  
 
