@@ -1,4 +1,5 @@
 from typing import List
+from typing import Optional
 
 
 class ListNode:
@@ -214,6 +215,30 @@ class my_linked_list:
 
         prev.next = prev.next.next
 
+
+#problem 876    
+class middle_of_the_linked_list: 
+    def __init__(self, head: Optional[ListNode]):
+        self.head = head
+
+    def middleNode(self):
+        current = self.head
+        queue = []
+        while current:
+            queue.append(current.val)
+            current = current.next
+            
+        size = len(queue)/2
+        
+        if not isinstance(size, int):
+            size = len(queue) - int(size  + 0.5) 
+        
+        print(size)
+        print(queue)
+
+        queue = queue[size:]
+        print(queue)
+        return queue
         
 
  
@@ -231,10 +256,12 @@ class byandsell:
         
         pass
 
-array_instance = reverse_linked_list([1, 2, 3, 4, 5])
 
-unique_array_result = array_instance.reverseList()
+linked_list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5,ListNode(6))))))
+array_instance = middle_of_the_linked_list(linked_list)
+test = array_instance.middleNode()
 
+print(test)
 
 
 
