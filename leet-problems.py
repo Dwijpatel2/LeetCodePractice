@@ -239,10 +239,27 @@ class middle_of_the_linked_list:
         queue = queue[size:]
         print(queue)
         return queue
-        
+    
+#prooblem 1700
+class number_of_student_unable_to_eat_lunch:
+    def __init__(self, students, sandwitch) -> None:
+        self.students = students
+        self.sandwitch = sandwitch
 
- 
-
+    def countStudents(self) -> int:
+        counter = 0
+        while self.students: 
+            if self.students[0] == self.sandwitch[0]:   
+                self.students.pop(0)
+                self.sandwitch.pop(0)
+                counter = 0
+            else:
+                self.students.append(self.students.pop(0))
+                counter += 1
+            if counter > len(self.students):
+                return len(self.students) 
+        return len(self.students)
+    
 class byandsell:
     
     def __init__(self, items):
@@ -257,11 +274,11 @@ class byandsell:
         pass
 
 
-linked_list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5,ListNode(6))))))
-array_instance = middle_of_the_linked_list(linked_list)
-test = array_instance.middleNode()
+linked_list = number_of_student_unable_to_eat_lunch([1,1,1,0,0,1], [1,0,0,0,1,1])
+array_instance = linked_list.countStudents()
 
-print(test)
+
+print(f"Answer: {array_instance}")
 
 
 
