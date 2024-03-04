@@ -260,6 +260,19 @@ class number_of_student_unable_to_eat_lunch:
                 return len(self.students) 
         return len(self.students)
     
+
+#problem 509
+class fibonacci_number:
+    def fib(self, n: int) -> int:
+        if n < 2: 
+            if n == 0:
+                return 0
+            return 1 
+        
+        return self.fib(n-1) + self.fib(n-2)
+
+
+    
 class byandsell:
     
     def __init__(self, items):
@@ -274,11 +287,11 @@ class byandsell:
         pass
 
 
-linked_list = number_of_student_unable_to_eat_lunch([1,1,1,0,0,1], [1,0,0,0,1,1])
-array_instance = linked_list.countStudents()
+linked_list = fibonacci_number()
+array_instance = linked_list.fib(4)
 
 
-print(f"Answer: {array_instance}")
+print(array_instance)
 
 
 
