@@ -12,6 +12,9 @@ class Node:
         self.data = data
         self.next = None
 
+
+#region Arrays 
+
 # problem 26
 class remove_duplicate_from_array: 
      def __init__(self, input_array):
@@ -132,9 +135,9 @@ class baseball_game:
         return t
     
 
+#endregion
 
-
-
+#region LinkedList
 # problem 206
 class reverse_linked_list: 
     def __init__(self, values=None):
@@ -260,7 +263,10 @@ class number_of_student_unable_to_eat_lunch:
                 return len(self.students) 
         return len(self.students)
     
+#endregion
 
+#region Recursion 
+     
 #problem 509
 class fibonacci_number:
     def fib(self, n: int, memo = None) -> int:
@@ -274,6 +280,7 @@ class fibonacci_number:
             return n 
         memo[n] = self.fib(n-1, memo) + self.fib(n-2, memo)
         return memo[n]
+
 
 #problem 70 
 class climbing_stairs: 
@@ -290,7 +297,56 @@ class climbing_stairs:
         memo[n] = self.climbStairs(n - 2, memo)  + self.climbStairs(n - 1, memo)
 
         return memo[n]
-    
+#endregion
+
+#region Sorting 
+
+#problem 912. **Merge Sorting**
+class sort_an_array:
+    def sortArray(self, nums: List[int]) -> List[int]:
+        if len(nums) <= 1:
+            return nums 
+        mid = len(nums)//2
+        left = nums[:mid]
+        right = nums[mid:]
+        
+        
+        self.sortArray(left)
+        self.sortArray(right)
+        return self.merge(left, right, nums)
+
+    def merge(self, left, right, nums):
+        l = 0
+        r = 0
+        m = 0
+        
+        while l < len(left) and r < len(right):
+
+            if left[l] > right[r]:
+                nums[m] = right[r]
+                r +=1
+            else:
+                nums[m] = left[l]
+                l +=1
+            
+            m += 1
+        
+        while l < len(left):
+            nums[m] = left[l]
+            l += 1
+            m += 1 
+
+        while r < len(right):
+            nums[m] = right[r]
+            r += 1
+            m += 1  
+
+        return nums
+
+
+#endregion 
+
+
 class byandsell:
     
     def __init__(self, items):
@@ -306,8 +362,8 @@ class byandsell:
 
 
 
-linked_list = climbing_stairs()
-array_instance = linked_list.climbStairs(20)
+linked_list = sort_an_array()
+array_instance = linked_list.sortArray([5,2,3,1])
 
 
 print(array_instance)
